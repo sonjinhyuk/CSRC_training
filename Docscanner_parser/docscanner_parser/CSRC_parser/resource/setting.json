@@ -1,0 +1,173 @@
+{
+  "ipinfo_token": "bf882c1cc85e28",
+  "python3_path": "/home/classact/kaist_project_starter/sources/kaist_docscanner/venv/bin/python",
+  "ViewText_Dec": "/home/classact/kaist_project_starter/sources/kaist_docscanner/docscanner/Parser/OLEParser/bin/",
+  "api_list": [
+    "UrlDownloadToFile", "GetTempPath", "GetWindowsDirectory", "GetSystemDirectory", "ShellExecute",
+    "IsBadReadPtr", "IsBadWritePtr", "CreateFile", "CreateHandle", "ReadFile",
+    "WriteFile", "SetFilePointer", "VirtualAlloc", "GetProcAddress", "LoadLibrary",
+    "CopyFile", "OpenProcess"
+  ],
+  "hwp_keylist": [
+    "exe", "xml", "bax", "mz", "yara", "cve", "jar", "dll", "shell", "shellrun", "shellexecute", "powershell", "filecopy", "copyfile", "savetofile",
+    "downloadfile", "deletefolder", "folderexists", "mkdir", "createdirectory", "urldonloadtofile", "urldonloadto", "admin",
+    "Administrator", "root", "Password", "Security", "Crypt", "Base64", "Encode64", "MyDecode", "Convert", "ThreadId","createthread",
+    "StackSize", "Resource", "ResourceReader", "hkey_local", "kenel32", "auto_close", "regsvr32", "Runtime","stdole2", "automation",
+    "Evaluate", "Replace", "padding", "Rebuild", "MELBLUEEmbedded", "Unprotec", "SetSuspendStats", "keylogger", "manifest", "assembly",
+    "requestedExecutionlevel", "eval", "eps", "ps", "url", "%u9090%u9090", "getIcon", "temp", "tmp", "unescape", "chunk", "fromCharCode",
+    "subject", "html", "sys", "filepath", "ip", "domain", "ascii", "%appdata%", "javascript", "Script", "sectionscript","otherscript",
+    "js", "js_size", "vcvdg", "http", "string dup", "putinterval", "repeat", "headerNone", "UrlDownloadToFile", "GetTempPath",
+    "GetWindowsDirectory", "GetSystemDirectory", "IsBadReadPtr", "IsBadWritePtr", "CreateFile", "CreateHandle", "ReadFile",
+    "WriteFile", "SetFilePointer", "VirtualAlloc", "GetProcAddress", "LoadLibrary", "OpenProcess", "Generic43", "Generic44",
+    "tag_id_47", "tag_id_66", "tag_id_67", "tag_id_68", "tag_id_69", "tag_id_70", "tag_id_71", "tag_id_72", "tag_id_73",
+    "tag_id_74", "tag_id_75", "tag_id_76", "tag_id_77", "tag_id_78", "tag_id_79", "tag_id_80", "tag_id_81","tag_id_82",
+    "tag_id_83", "tag_id_84", "tag_id_85", "tag_id_87", "tag_id_88", "tag_id_91", "tag_id_93", "tag_id_oth", "exec|xor", "exec|cvx", "length"
+  ],
+  "ole_keylist": [
+    "exe", "xml","bax", "vba", "mz", "yara", "cve", "jar", "dll", "shell", "shellrun", "shellexecute", "powershell", "filecopy", "copyfile", "savetofile", "compress_count",
+    "downloadfile", "deletefolder", "folderexists", "mkdir", "createdirectory", "urldonloadtofile", "urldonloadto", "admin",
+    "Administrator", "root", "Password", "Security", "Crypt", "Base64", "Encode64", "MyDecode", "Convert", "ThreadId","createthread",
+    "StackSize", "Resource", "ResourceReader", "hkey_local", "kenel32", "auto_close", "regsvr32", "Runtime","stdole2", "automation",
+    "Evaluate", "Replace", "padding", "Rebuild", "MELBLUEEmbedded", "Unprotec", "SetSuspendStats", "keylogger", "manifest", "assembly",
+    "requestedExecutionlevel", "eval", "url", "%u9090%u9090", "getIcon", "temp", "tmp", "unescape", "chunk", "fromCharCode", "xmlscript",
+    "subject", "html", "sys", "filepath", "ip", "domain", "ascii", "%appdata%", "javascript", "Script", "sectionscript","otherscript",
+    "js", "js_size", "vcvdg", "http", "string dup", "putinterval", "repeat", "headerNone", "UrlDownloadToFile", "GetTempPath",
+    "GetWindowsDirectory", "GetSystemDirectory", "IsBadReadPtr", "IsBadWritePtr", "CreateFile", "CreateHandle", "ReadFile",
+    "WriteFile", "SetFilePointer", "VirtualAlloc", "GetProcAddress", "LoadLibrary", "OpenProcess",
+    "EQNEDT32", "DDE", "DDEAUTO", "_Ole10Native", "oleObject1.bin", "equation Native", "DOS mode", "Chr", "AutoOpen", "hta",
+    "Environ", "Write", "Put", "Output", "Kill", "RegOpenKeyExA", "RegOpenKeyEx", "RegCloseKey", "RegCloseKeyEx", "RegQueryValueExA", "GetVolumeInformation", "SW_HIDE", "Auto_Open"
+  ],
+
+
+  "script_api_list": [
+    "ActiveXObject", "GetSpecialFolder", "WriteText", "SaveToFile", "WriteAll"
+  ],
+  "mz_yara": "mz.yar",
+  "ip_yara_detect": "ip.yar",
+  "url_yara_detect": "url.yar",
+  "cve_yara": "cve_index.yar",
+  "hwp_yara": "yara_index.yar",
+  "pdf_yara": "yara_index.yar",
+  "ole_yara": "yara_index.yar",
+
+  "xairesult": {
+    "f_id": "",
+    "xaifiletype": 0,
+    "probability": 0.0,
+    "shapfeaturename": "",
+    "targetvalue": "",
+    "summaryflotimg": "",
+    "rainfallflotimg": "",
+    "interpretation": ""
+  },
+  "pdf_form": {
+    "basicInfo": {
+      "b_id": -1,
+      "f_id": "",
+      "sourcefilename": "",
+      "sha256": "",
+      "md5": "",
+      "filetype": 0,
+      "filesize": -1,
+      "numofpage": -1,
+      "docversion": -1,
+      "creationdate": "1900-01-01 00:00:00.000000",
+      "modificationdate": "1900-01-01 00:00:00.000000",
+      "analysisdate": "",
+      "ismalware": 2
+    },
+    "pdfInfo": {
+     "f_id" : "",
+     "author" : "",
+     "producer" : "",
+     "creator" : "",
+     "threatobj" : "",
+     "decomlist" : "",
+     "decomcount" : "",
+     "ipurluriinfo" : "",
+     "cvedetect" : "",
+     "yaradetect" : "",
+     "binaryyaradetect" : "",
+     "embeddingfile" : "",
+     "jscodelist" : "",
+     "jsobfusioncount" : "",
+     "pdfcontent" : ""
+    }
+  },
+  "hwp_form": {
+    "basicInfo": {
+      "b_id": -1,
+      "f_id": "",
+      "sourcefilename": "",
+      "sha256": "",
+      "md5": "",
+      "filetype": 0,
+      "filesize": -1,
+      "numofpage": -1,
+      "docversion": -1,
+      "creationdate": "1900-01-01 00:00:00",
+      "modificationdate": "1900-01-01 00:00:00",
+      "analysisdate": "1900-01-01 00:00:00",
+      "ismalware": 2
+    },
+    "hwpInfo": {
+      "f_id": "",
+      "fileheader": "",
+      "title": "",
+      "author": "",
+      "lastsavedby": "",
+      "lastsavedtime": "1900-01-01 00:00:00",
+      "pretext": "",
+      "ipurluriinfo": "",
+      "cvedetect" : "",
+      "yaradetect" : "",
+      "binaryyaradetect" : "",
+      "decomjscript": "",
+      "decomghost": "",
+      "decomshell": "",
+      "decombase64": "",
+      "numofcompsection": -1,
+      "ispack": -1,
+      "isencrypt": -1,
+      "streamlist": "",
+      "apilist": "",
+      "findmzstreampath": ""
+    }
+  },
+  "form": {
+    "basicInfo": {
+      "b_id": -1,
+      "f_id": "",
+      "sourcefilename": "",
+      "sha256": "",
+      "md5": "",
+      "filetype": 0,
+      "filesize": -1,
+      "numofpage": -1,
+      "docversion": -1,
+      "creationdate": "1900-01-01 00:00:00.000000",
+      "modificationdate": "1900-01-01 00:00:00.000000",
+      "analysisdate": "",
+      "ismalware": 2
+    },
+    "detailInfo": {
+      "f_id": "",
+      "detail_type": "",
+      "title": "",
+      "author": "",
+      "lastsavedby": "",
+      "lastsavedtime": "1900-01-01 00:00:00",
+      "isencrypt": 0,
+      "ipurluriinfo": "",
+      "cvedetect" : "",
+      "yaradetect" : "",
+      "binaryyaradetect" : "",
+      "numberofvba": 0,
+      "vbascript": "",
+      "apilist": "",
+      "findmzstreampath": "",
+      "xmlscript": "",
+      "dde": ""
+    }
+  }
+}
