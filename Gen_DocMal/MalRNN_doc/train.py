@@ -113,10 +113,11 @@ def run(args):
             best_score = malconv_result
             best_loss = loss.data / args.chunk_len
         elif best_score == malconv_result:
-            print("Best score updated! Saving...")
-            best_model = model
-            best_score = malconv_result
-            best_loss = loss.data / args.chunk_len
+            if best_loss > (loss.data / args.chunk_len):
+                print("Best score updated! Saving...")
+                best_model = model
+                best_score = malconv_result
+                best_loss = loss.data / args.chunk_len
 
     if not os.path.exists(args.save_path):
         os.mkdir(args.save_path)
