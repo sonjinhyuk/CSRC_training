@@ -78,7 +78,7 @@ class cPDFElementIndirectObject:
             if keyword[0] == "/" and token[0] == CHAR_DELIMITER and EqualCanonical(token[1], keyword):
                 return True
             elif keyword[0] != "/" and token[0] == CHAR_REGULAR:
-                if keyword in token[1]:
+                if keyword in token[1] and regex != None:
                     return True
                 elif regex is None:
                     return False

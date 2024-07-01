@@ -1,3 +1,4 @@
+import re
 import zlib
 import binascii
 import sys
@@ -175,9 +176,20 @@ def Wbit_Uncompress(data):
     return zobj.decompress(stringData)
 
 def UnFilters(filter, s):
-
+    # filter = re.findall(r'\[(.*?)\]',s[0].decode())
     data1 = ""
-    if "FlateDecode" in filter:
+    ## Decoding 2개 이상일 경우 처리 - 추가
+    # if "/Fl /AHx" in filter:
+    #     strip_data = s[1].strip(b'\r\n')
+    #     try:
+    #         data1 = Uncompress(strip_data)
+    #     except:
+    #         data1 = zlib.decompress(strip_data).decode('UTF-8', errors='ignore')
+    #
+    #     data1 = ASCIIHexDecode(data1)
+
+    if "FlateDecode" == filter:
+
         strip_data = s[1].strip(b'\r\n')
         try:
             data1 = Uncompress(strip_data)
@@ -190,6 +202,7 @@ def UnFilters(filter, s):
     elif "ASCIIHexDecode" in filter:
         try:
             data1 = ASCIIHexDecode(s[1])
+            print(s[1])
         except:
             data1 = s[1]
             pass
@@ -222,6 +235,5 @@ def UnFilters(filter, s):
             pass
     else:
         data1 = s[1]
-
 
     return data1

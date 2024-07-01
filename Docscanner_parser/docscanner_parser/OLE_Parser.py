@@ -18,6 +18,7 @@ print(result.model_input)
 result.info.to_json('basic_data.json', indent=4)
 result.model_input.to_json('model_data.json', indent=4)
 
+
 # # OLE Parsing
 # file_path = r"C:\Users\csrc\Downloads\위협모델_RFP.hwp"
 # result, app = CSRC_parser.DocParser.ole_main(file=file_path)

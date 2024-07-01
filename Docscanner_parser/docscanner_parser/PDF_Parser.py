@@ -1,6 +1,9 @@
 from CSRC_parser.PDFparser import preprocessing
+import os
 
-file_path = r"D:\research\ISEC2024\malware\sample\pdf\1ACC76A85AB0AAA4DC8E3A41EF49DD6F9925350E2E3292160927C031607121D8"
+file_path = r"D:\research\ISEC2024\malware\sample\complete\pdf\pdf_sample_1.pdf"
+file_path = r"D:\research\ISEC2024\malware\sample\complete\pdf\aa\VirusShare_3dbe868775933d0620f63a6f44893afc\3777e556ddbafa08d7dcb35876bc47ee1226a8ad7d014d94ec5c6f6fc191a34d"
+file_path = r"D:\research\ISEC2024\malware\sample\complete\pdf\pdf_sample_1.pdf"
 
 result = preprocessing.pdfparser(file_path)
 

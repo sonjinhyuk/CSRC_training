@@ -39,7 +39,15 @@ def get_model_input(file_path):
         return:
             :return model input(dict): for model input
     """
+    # oPDFParser = cPDFParser(file_path, False, None)
+
+    # import pypdftk
+    #
+    # # pypdftk.uncompress(file_path, out_file=file_path+"decom")
+    # # file_path = file_path+"decom"
     oPDFParser = cPDFParser(file_path, False, None)
+
+
     cntComment = 0
     cntXref = 0
     xref_size = 0
@@ -128,6 +136,8 @@ def get_model_input(file_path):
                             regex = "exe"
                         elif keyword == "ascii":
                             regex = "([`~!@#$%^&*()-_=+][0-9][0-9A-z]{0,1}){2,}"
+                        elif keyword == "ip":
+                            regex = "([0-9]{1,3}\.){3}[0-9]{1,3}"
 
                         if object.ContainsName(keyword, regex):
                             if keyword == "/Length":
@@ -178,6 +188,7 @@ def get_model_input(file_path):
                                 inStream_dict[vd] += 1
 
                     for streamkey in inStreamKeywords[-nof_regex:]:
+
                         regex = None
                         if streamkey == "ascii":
                             regex = "([`~!@#$%^&*()-_=+A-z][0-9][0-9A-z]{0,1}){2,}"
@@ -206,6 +217,7 @@ def get_model_input(file_path):
                       "/Author", "/Creator", "html", "htm", "%appdata%", "getIcon", "/RichMedia",
                       "subject", "/Subject", "replace", "formcharCode", "sys"]
     df_dict = {"file_name": file_path}
+
     for key, value in dKeywords.items():
         kl = key.lower()
         if "js" in kl or "javascript" in kl:
@@ -239,6 +251,7 @@ def get_model_input(file_path):
     df_dict["trailer_size"] = trailer_size
     df_dict["file_size"] = file_size
     df_dict["nof_stream"] = nof_stream
+
     return df_dict
 
 def get_pdf_detail_info(file_path: str = None,
@@ -249,7 +262,8 @@ def get_pdf_detail_info(file_path: str = None,
                         url_yara:object = None,
                         input_data:dict = None,
                         p_count:int = 0,
-                        sha256: str = None) -> None:
+                        sha256: str = None,
+                        md5: str = None) -> None:
 
     bft_dict['pdfInfo']['f_id'] = bft_dict['basicInfo']['f_id']
     if pdf_obj.metadata is None:
@@ -261,6 +275,8 @@ def get_pdf_detail_info(file_path: str = None,
         bft_dict['pdfInfo']['producer'] = pdf_obj.metadata['producer'][:150]
         bft_dict['pdfInfo']['creator'] = pdf_obj.metadata['creator'][:150]
 
+    bft_dict['pdfInfo']['sha256'] = sha256
+    bft_dict['pdfInfo']['md5'] = md5
     bft_dict['pdfInfo']['threatobj'] = ""
     bft_dict['pdfInfo']['ipurluriinfo'] = ""
     bft_dict['pdfInfo']['yaradetect'] = ""
@@ -324,7 +340,10 @@ def get_pdf_detail_info(file_path: str = None,
                 os.makedirs(f'{out_dir}/data/')
 
             for index, filter in enumerate(temp_filters):
+
                 data = UnFilters(filter, s)
+
+
                 if len(temp_filters) != 0:
                     js_file = f'{out_dir}/js/{i}_{index}'
                     data_file = f'{out_dir}/data/{i}_{index}_data.txt'
@@ -391,6 +410,7 @@ def pdfparser(file_path: str = None) -> pd.DataFrame:
 
     ##
     sha256 = hashlib.sha256(open(file_path, 'rb').read()).hexdigest()
+    md5 = hashlib.md5(open(file_path, 'rb').read()).hexdigest()
     out_dir = "output/pdf/" + sha256
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
@@ -415,6 +435,8 @@ def pdfparser(file_path: str = None) -> pd.DataFrame:
 
     ## pdf metadata resource
     Fsize = os.path.getsize(file_path)
+    bft_dict['basicInfo']['sha256'] = sha256
+    bft_dict['basicInfo']['md5'] = md5
     bft_dict['basicInfo']['filetype'] = 0
     bft_dict['basicInfo']['filesize'] = Fsize
     bft_dict['basicInfo']['numofpage'] = p_count
@@ -443,7 +465,7 @@ def pdfparser(file_path: str = None) -> pd.DataFrame:
 
     ## AI model input form generate
     input_data = get_model_input(file_path)
-    get_pdf_detail_info(file_path, out_dir, bft_dict, pdf_obj, ip_yara, url_yara, input_data, p_count, sha256)
+    get_pdf_detail_info(file_path, out_dir, bft_dict, pdf_obj, ip_yara, url_yara, input_data, p_count, sha256, md5)
     end_time = int(time.time() * 1000)
     bft_dict['basicInfo']['analysistime'] = end_time - start_time
 
@@ -456,10 +478,15 @@ def pdfparser(file_path: str = None) -> pd.DataFrame:
 
 def pdf_Analyzer(indir, __dict, sha256):
     rule_match_result = ""
+    ipyara_result = []
+    urlyara_result = []
     metadata = ""
 
     rules = yara.compile(YARA_DIR + get_setting('pdf_yara'))
     cve_rules = yara.compile(YARA_DIR + get_setting('cve_yara'))
+    ip_rules = yara.compile(YARA_DIR + get_setting('ip_yara_detect'))
+    url_rules = yara.compile(YARA_DIR + get_setting('url_yara_detect'))
+
     # # 0. Log file Analyzer
 
     # ## 1. JS EndState Count File Check
@@ -480,6 +507,26 @@ def pdf_Analyzer(indir, __dict, sha256):
         metadata += '|'.join(list(map(str, rule_match_result)))
 
     else:
+        ## TEST 추가
+        if not js_list.items():
+            path = Path(f'{indir}/data')
+            for p in path.glob("*_data.txt"):
+                with open(p, 'r', encoding='utf-8') as data_reader:
+                    read_data = data_reader.read()
+                    rule_match_result = rules.match(data=read_data)
+                    metadata += '|'.join(list(map(str, rule_match_result)))
+
+                    ipyara = ip_rules.match(data=read_data)
+                    urlyara = url_rules.match(data=read_data)
+
+                    if len(ipyara):
+                        for val in ipyara[0].strings[0].instances:
+                            ipyara_result.append(str(val))
+
+                    if len(urlyara):
+                        for val in urlyara[0].strings[0].instances:
+                            urlyara_result.append(str(val))
+
         try:
             for js_index, index in js_list.items():
                 js_file = f'{indir}/js/{js_index}_0_{index}.js'
@@ -518,5 +565,10 @@ def pdf_Analyzer(indir, __dict, sha256):
     binaryyara_metadata = '|'.join(list(map(str, binary_detect)))
     cveyara_metadata = '|'.join(list(map(str, cve_detect)))
 
+
     __dict['binaryyaradetect'] = binaryyara_metadata
     __dict['cvedecte'] = cveyara_metadata
+
+    ## 추가
+    __dict['ipurluriinfo'] += '|'.join(map(str, set(ipyara_result)))
+    __dict['ipurluriinfo'] += '|'.join(map(str, set(urlyara_result)))
