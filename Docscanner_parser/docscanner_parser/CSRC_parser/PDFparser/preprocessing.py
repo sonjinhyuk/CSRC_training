@@ -343,7 +343,6 @@ def get_pdf_detail_info(file_path: str = None,
 
                 data = UnFilters(filter, s)
 
-
                 if len(temp_filters) != 0:
                     js_file = f'{out_dir}/js/{i}_{index}'
                     data_file = f'{out_dir}/data/{i}_{index}_data.txt'
@@ -357,6 +356,7 @@ def get_pdf_detail_info(file_path: str = None,
                     data = str(data)
                 except UnicodeDecodeError:
                     data = str(data)
+
                 if "eval(" in data:
                     try:
                         with open(f'{js_file}_1.js', 'w') as writer:
