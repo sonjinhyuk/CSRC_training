@@ -94,7 +94,7 @@ class OoXMLParser:
             _data += [0 for _ in self.ole_keylist]
             _data = pd.Series(_data, index=df_columns)
             self.model_input = _data
-            self.ooxml_yara = yara.compile(get_setting('ole_yara'))
+            self.ooxml_yara = yara.compile(YARA_DIR + get_setting('ole_yara'))
             self.run()
 
         self.info = pd.DataFrame(self.info)
@@ -365,7 +365,6 @@ class OoXMLParser:
         self.info["basicInfo"]["sourcefilename"] = self.source_file_name
         self.info["basicInfo"]["sha256"] = self.sha256
         self.info["basicInfo"]["md5"] = self.md5
-        self.info["basicInfo"]["filetype"] = self.file_type_id
         self.info["detailInfo"]["detail_type"] = self.file_type
 
         self.xml_parser()

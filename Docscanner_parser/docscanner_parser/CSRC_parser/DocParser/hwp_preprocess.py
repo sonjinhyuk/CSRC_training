@@ -60,11 +60,8 @@ class HwpParser:
                 :param md5: input file md5 value
             return:
         """
-        if output_dir is None:
-            self.output = '/home/data1/jhson21/HWP_DATA/HWP_dataout/{}'.format(app)
-        else:
-            self.output = output_dir
 
+        self.output = output_dir
         self.python3_path = get_setting('python3_path')
         self.ViewText_Dec = get_setting('ViewText_Dec')
         self.compress_count = 0
@@ -562,25 +559,25 @@ class HwpParser:
                                 self.info["hwpInfo"]["ipurluriinfo"] += url_yara
                                 #todo
                                 # gswin 처리
-                                ghost = "/usr/bin/ghostscript"
-                                ghost_cmd = [ghost, "-q", decom_path]
-                                ghost_r_path = f'{self.output}/{"_".join(stream)}_ghost_result.txt'
-                                self.info["hwpInfo"]["decomghost"] += (ghost_r_path + '|')
-                                with open(ghost_r_path, 'w', encoding='utf-8') as f:
-                                    try:
-                                        # ghost_execute = sp.check_output(ghost_cmd)
-                                        p = sp.Popen(ghost_cmd, stdout=sp.PIPE, stderr=sp.STDOUT, universal_newlines=True)
-                                        # try:
-                                        #     out, errs = p.communicate(timeout=10)
-                                        # except subprocess.TimeoutExpired:
-                                        #     p.kill()
-                                        # while p.poll() == None:
-                                        #     out = p.stdout.readline()
-                                        #     print(out, end='')
-                                        ghost_execute = p.stdout.read()
-                                        f.write(str(ghost_execute))
-                                    except sp.CalledProcessError:
-                                        f.write('GPL Ghostscript 8.71: Unrecoverable error, exit code 1\n')
+                                # ghost = "/usr/bin/ghostscript"
+                                # ghost_cmd = [ghost, "-q", decom_path]
+                                # ghost_r_path = f'{self.output}/{"_".join(stream)}_ghost_result.txt'
+                                # self.info["hwpInfo"]["decomghost"] += (ghost_r_path + '|')
+                                # with open(ghost_r_path, 'w', encoding='utf-8') as f:
+                                #     try:
+                                #         # ghost_execute = sp.check_output(ghost_cmd)
+                                #         p = sp.Popen(ghost_cmd, stdout=sp.PIPE, stderr=sp.STDOUT, universal_newlines=True)
+                                #         # try:
+                                #         #     out, errs = p.communicate(timeout=10)
+                                #         # except subprocess.TimeoutExpired:
+                                #         #     p.kill()
+                                #         # while p.poll() == None:
+                                #         #     out = p.stdout.readline()
+                                #         #     print(out, end='')
+                                #         ghost_execute = p.stdout.read()
+                                #         f.write(str(ghost_execute))
+                                #     except sp.CalledProcessError:
+                                #         f.write('GPL Ghostscript 8.71: Unrecoverable error, exit code 1\n')
                             else:
                                 for number, d in enumerate(data):
                                     if '==' in d:

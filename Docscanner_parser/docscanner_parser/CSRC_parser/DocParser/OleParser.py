@@ -1,7 +1,7 @@
 import os
-import time
 
 from .. import get_setting, ip_yara_detect, url_yara_detect, get_current_date, search_all, stream_read
+from CSRC_parser import get_setting, ip_yara_detect, url_yara_detect, get_current_date, search_all, stream_read
 import olefile
 import regex
 import yara
