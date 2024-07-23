@@ -1,3 +1,5 @@
+import sys
+
 import pandas as pd
 from CSRC_parser import ip_yara_detect, url_yara_detect
 from .cPDFs.cPDFUtil import PDF_ELEMENT_COMMENT, PDF_ELEMENT_XREF, PDF_ELEMENT_TRAILER, PDF_ELEMENT_STARTXREF, \
@@ -20,7 +22,7 @@ from types import SimpleNamespace
 import hashlib
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-YARA_DIR = f'{os.path.join(BASE_DIR)}\\resource\\csrc_YARA\\'
+YARA_DIR = f'{os.path.join(BASE_DIR)}/resource/csrc_YARA/'
 
 class Result:
     def __init__(self, bft_dict, input_data):
@@ -421,7 +423,6 @@ def pdfparser(file_path: str = None) -> pd.DataFrame:
     LoadDecoders('', True)
 
     bft_dict = get_setting("pdf_form")
-
     ## Yara Detect, ip and url
     ip_yara = yara.compile(YARA_DIR + get_setting('ip_yara_detect'))
     url_yara = yara.compile(YARA_DIR + get_setting('url_yara_detect'))

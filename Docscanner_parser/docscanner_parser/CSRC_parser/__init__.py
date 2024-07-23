@@ -8,7 +8,7 @@ from pathlib import Path
 decompile_size = 15000
 
 BASE_DIR = Path(__file__).resolve().parent
-SETTING_JSON = f"{os.path.join(BASE_DIR)}\\resource\\setting.json"
+SETTING_JSON = f"{os.path.join(BASE_DIR)}/resource/setting.json"
 
 # def preprocessing(self, info_type = "pdfInfo"):
 #     self.info['basicInfo']['b_id'], self.info['basicInfo']['f_id'] = get_bfid(self.file_type_id, self.file_type)

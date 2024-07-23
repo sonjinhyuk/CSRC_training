@@ -29,7 +29,8 @@ def head_eval_js(js):
     return js2
 
 def run_js_csrc_node(jsfile):
-    p = subprocess.Popen(['C:\\Program Files\\nodejs\\node.exe', jsfile], stdout=subprocess.PIPE)
+    p = subprocess.Popen(['node', jsfile], stdout=subprocess.PIPE)
+    print(p)
     try:
         out = p.stdout.read().decode('utf8')
     except TypeError:
@@ -38,6 +39,7 @@ def run_js_csrc_node(jsfile):
     except ReferenceError:
         print("ReferenceError " + jsfile)
         out = None
+    print(out)
     return out
 def recuv_js(js_file):
     file_js_0 = js2py.get_file_contents(js_file)
