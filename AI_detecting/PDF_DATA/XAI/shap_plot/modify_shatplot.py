@@ -903,17 +903,17 @@ def summary_plot(shap_values, features=None, feature_names=None, max_display=Non
         plt.legend(frameon=False, fontsize=12)
 
     ## draw the color bar
-    if color_bar and features is not None and plot_type != "bar" and \
-            (plot_type != "layered_violin" or color in plt.cm.datad):
-        import matplotlib.cm as cm
-        m = cm.ScalarMappable(cmap=cmap if plot_type != "layered_violin" else plt.get_cmap(color))
-        m.set_array([0, 1])
-        cb = plt.colorbar(m, ticks=[0, 1], aspect=80)
-        cb.set_ticklabels([labels['FEATURE_VALUE_LOW'], labels['FEATURE_VALUE_HIGH']])
-        cb.set_label(color_bar_label, size=12, labelpad=0)
-        cb.ax.tick_params(labelsize=11, length=0)
-        cb.set_alpha(1)
-        cb.outline.set_visible(False)
+    # if color_bar and features is not None and plot_type != "bar" and \
+    #         (plot_type != "layered_violin" or color in plt.cm.datad):
+    #     import matplotlib.cm as cm
+    #     m = cm.ScalarMappable(cmap=cmap if plot_type != "layered_violin" else plt.get_cmap(color))
+    #     m.set_array([0, 1])
+    #     cb = plt.colorbar(m, ticks=[0, 1], aspect=80)
+    #     cb.set_ticklabels([labels['FEATURE_VALUE_LOW'], labels['FEATURE_VALUE_HIGH']])
+    #     cb.set_label(color_bar_label, size=12, labelpad=0)
+    #     cb.ax.tick_params(labelsize=11, length=0)
+    #     cb.set_alpha(1)
+    #     cb.outline.set_visible(False)
 
 
     # #         bbox = cb.ax.get_window_extent().transformed(plt.gcf().dpi_scale_trans.inverted())
