@@ -3,3 +3,4 @@ __pycache__
 AI_detecting/venv
 AI_detecting/PDF_DATA/*.csv
 AI_detecting/PDF_DATA/models
+.DS_Store
